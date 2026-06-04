@@ -6,80 +6,163 @@ from datetime import datetime
 import time
 
 st.set_page_config(
-    page_title="Smart Surveillance AI",
-    page_icon="🎥",
+    page_title="AI Security Platform",
+    page_icon="🛡️",
     layout="wide"
 )
+
+# =========================
+# PREMIUM CYBER DESIGN
+# =========================
 st.markdown("""
 <style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap');
+
+html, body, [class*="css"] {
+    font-family: 'Inter', sans-serif;
+}
+
 .stApp {
-    background-color: #0B1020 !important;
+    background:
+        radial-gradient(circle at top left, rgba(0, 212, 255, 0.18), transparent 28%),
+        radial-gradient(circle at bottom right, rgba(0, 255, 157, 0.12), transparent 30%),
+        linear-gradient(135deg, #050816 0%, #0A0F1C 45%, #111827 100%) !important;
     color: #FFFFFF !important;
 }
 
 [data-testid="stSidebar"] {
-    background-color: #111827 !important;
+    background: linear-gradient(180deg, #050816 0%, #0B1020 100%) !important;
+    border-right: 1px solid rgba(0, 212, 255, 0.25);
 }
 
-h1, h2, h3, p, label, span, div {
+[data-testid="stSidebar"] * {
+    color: #E5E7EB !important;
+}
+
+h1 {
     color: #FFFFFF !important;
+    font-weight: 900 !important;
+    letter-spacing: -1px;
 }
 
-[data-testid="stMetricValue"],
+h2, h3 {
+    color: #FFFFFF !important;
+    font-weight: 800 !important;
+}
+
+p, label, span, div {
+    color: #E5E7EB !important;
+}
+
+hr {
+    border: none;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(0,212,255,.45), transparent);
+}
+
+[data-testid="stMetric"] {
+    background: linear-gradient(135deg, rgba(17, 24, 39, 0.95), rgba(30, 41, 59, 0.85));
+    border: 1px solid rgba(0, 212, 255, 0.35);
+    padding: 20px;
+    border-radius: 20px;
+    box-shadow: 0 0 30px rgba(0, 212, 255, 0.12);
+}
+
+[data-testid="stMetricValue"] {
+    color: #00FF9D !important;
+    font-size: 34px !important;
+    font-weight: 900 !important;
+}
+
 [data-testid="stMetricLabel"] {
-    color: #FFFFFF !important;
+    color: #94A3B8 !important;
+    text-transform: uppercase;
+    font-size: 12px !important;
+    letter-spacing: 1px;
 }
-</style>
-""", unsafe_allow_html=True)
 
+.stButton > button {
+    background: linear-gradient(90deg, #00D4FF, #00FF9D) !important;
+    color: #020617 !important;
+    border: none !important;
+    border-radius: 14px !important;
+    font-weight: 900 !important;
+    padding: 0.75rem 1.3rem !important;
+    box-shadow: 0 0 20px rgba(0, 255, 157, 0.25);
+}
 
-st.markdown("""
-<style>
-    .main {
-        background-color: #0b1020;
-    }
-    .block-container {
-        padding-top: 1.5rem;
-    }
-    h1, h2, h3 {
-        color: #ffffff;
-    }
-    p, label, span, div {
-        color: #e8edf7;
-    }
-    .metric-card {
-        background: linear-gradient(135deg, #121a33, #1f2a4a);
-        padding: 22px;
-        border-radius: 18px;
-        border: 1px solid rgba(0, 255, 180, 0.25);
-        box-shadow: 0 0 18px rgba(0,255,180,0.08);
-    }
-    .alert-box {
-        padding: 18px;
-        border-radius: 15px;
-        background-color: #2b1111;
-        border-left: 6px solid #ff4b4b;
-        color: white;
-        font-weight: 600;
-    }
-    .normal-box {
-        padding: 18px;
-        border-radius: 15px;
-        background-color: #102b1c;
-        border-left: 6px solid #1ed760;
-        color: white;
-        font-weight: 600;
-    }
-    .info-box {
-        padding: 18px;
-        border-radius: 15px;
-        background-color: #121a33;
-        border-left: 6px solid #00d4ff;
-        color: white;
-    }
-    .sidebar .sidebar-content {
-        background-color: #080c18;
-    }
+.stButton > button:hover {
+    box-shadow: 0 0 30px rgba(0, 255, 157, 0.55);
+    transform: translateY(-1px);
+}
+
+.info-box {
+    padding: 22px;
+    border-radius: 20px;
+    background: linear-gradient(135deg, rgba(17,24,39,.95), rgba(30,41,59,.85));
+    border: 1px solid rgba(0, 212, 255, 0.35);
+    box-shadow: 0 0 25px rgba(0, 212, 255, 0.12);
+}
+
+.alert-box {
+    padding: 22px;
+    border-radius: 20px;
+    background: linear-gradient(135deg, rgba(69, 10, 10, .95), rgba(127, 29, 29, .75));
+    border: 1px solid #FF4D4D;
+    box-shadow: 0 0 28px rgba(255, 77, 77, 0.25);
+}
+
+.normal-box {
+    padding: 22px;
+    border-radius: 20px;
+    background: linear-gradient(135deg, rgba(5, 46, 26, .95), rgba(6, 78, 59, .75));
+    border: 1px solid #00FF9D;
+    box-shadow: 0 0 28px rgba(0, 255, 157, 0.25);
+}
+
+.metric-card {
+    padding: 24px;
+    border-radius: 22px;
+    background: linear-gradient(135deg, rgba(17,24,39,.95), rgba(15,23,42,.9));
+    border: 1px solid rgba(0, 212, 255, 0.32);
+    box-shadow: 0 0 25px rgba(0, 212, 255, 0.12);
+    margin-bottom: 15px;
+}
+
+.status-online {
+    color: #00FF9D !important;
+    font-weight: 900;
+}
+
+.status-warning {
+    color: #FBBF24 !important;
+    font-weight: 900;
+}
+
+.status-offline {
+    color: #FF4D4D !important;
+    font-weight: 900;
+}
+
+.badge {
+    display: inline-block;
+    padding: 6px 12px;
+    border-radius: 999px;
+    background: rgba(0, 212, 255, .12);
+    border: 1px solid rgba(0, 212, 255, .35);
+    color: #00D4FF !important;
+    font-weight: 800;
+    font-size: 12px;
+    letter-spacing: .7px;
+    text-transform: uppercase;
+}
+
+[data-testid="stDataFrame"] {
+    border-radius: 18px;
+    overflow: hidden;
+    border: 1px solid rgba(0,212,255,.25);
+}
+
 </style>
 """, unsafe_allow_html=True)
 
@@ -114,31 +197,45 @@ df = load_data()
 # =========================
 # SIDEBAR
 # =========================
-st.sidebar.title("🎥 Smart Surveillance AI")
-st.sidebar.markdown("Plateforme intelligente de détection des comportements suspects.")
+st.sidebar.markdown("## 🛡️ AI Security Platform")
+st.sidebar.markdown("**Smart Surveillance Command Center**")
+st.sidebar.markdown(
+    "<span class='badge'>YOLO + CNN + LSTM</span>",
+    unsafe_allow_html=True
+)
+st.sidebar.markdown("---")
+
 page = st.sidebar.radio(
     "Navigation",
-    ["🏠 Dashboard", "🎬 Analyse vidéo", "🚨 Alertes", "📷 Caméras", "📊 Rapports", "⚙️ Paramètres IA"]
+    [
+        "🛡️ Security Center",
+        "🎥 AI Monitoring",
+        "⚠️ Threat Detection",
+        "📡 Camera Network",
+        "📈 Intelligence Reports",
+        "🤖 AI Engine"
+    ]
 )
 
 st.sidebar.markdown("---")
-st.sidebar.info("Projet basé sur : YOLO + CNN + LSTM")
+st.sidebar.info("Plateforme intelligente de détection des comportements suspects.")
 
 
 # =========================
 # HEADER
 # =========================
 def header(title, subtitle):
+    st.markdown(f"<span class='badge'>AI POWERED SURVEILLANCE</span>", unsafe_allow_html=True)
     st.title(title)
-    st.markdown(f"<p style='font-size:18px;color:#b7c5e5'>{subtitle}</p>", unsafe_allow_html=True)
+    st.markdown(f"<p style='font-size:18px;color:#94A3B8 !important'>{subtitle}</p>", unsafe_allow_html=True)
     st.markdown("---")
 
 
 # =========================
 # DASHBOARD
 # =========================
-if page == "🏠 Dashboard":
-    header("🏠 Dashboard général", "Vue globale de la plateforme de surveillance intelligente.")
+if page == "🛡️ Security Center":
+    header("🛡️ Smart Surveillance Command Center", "Vue globale de la plateforme intelligente de sécurité vidéo.")
 
     total_sequences = len(df)
     suspects = int((df["comportement"] == "Suspect").sum())
@@ -147,24 +244,39 @@ if page == "🏠 Dashboard":
 
     col1, col2, col3, col4 = st.columns(4)
 
-    col1.metric("Séquences analysées", total_sequences)
-    col2.metric("Comportements suspects", suspects)
-    col3.metric("Comportements normaux", normals)
-    col4.metric("Risque moyen", f"{risk_avg}%")
+    col1.metric("ACTIVE STREAMS", total_sequences)
+    col2.metric("THREATS DETECTED", suspects)
+    col3.metric("SAFE EVENTS", normals)
+    col4.metric("RISK INDEX", f"{risk_avg}%")
 
-    st.subheader("📌 Résumé du système")
+    st.subheader("📌 System Overview")
     st.markdown("""
     <div class="info-box">
-    Cette plateforme permet à un agent de sécurité de suivre les caméras, lancer une analyse vidéo,
+    Cette plateforme permet à un agent de sécurité de superviser les caméras, lancer une analyse vidéo,
     consulter les alertes détectées et visualiser les statistiques du système intelligent.
     </div>
     """, unsafe_allow_html=True)
 
-    st.subheader("🧠 Pipeline IA utilisé")
+    st.subheader("🧠 AI Processing Pipeline")
     c1, c2, c3 = st.columns(3)
-    c1.markdown("### 1️⃣ YOLO\nDétection des personnes et objets dans les images.")
-    c2.markdown("### 2️⃣ CNN\nExtraction des caractéristiques visuelles importantes.")
-    c3.markdown("### 3️⃣ LSTM\nAnalyse temporelle des comportements sur plusieurs images.")
+    c1.markdown("""
+    <div class="metric-card">
+    <h3>01 — YOLO Detection</h3>
+    <p>Détection rapide des personnes et objets dans chaque frame vidéo.</p>
+    </div>
+    """, unsafe_allow_html=True)
+    c2.markdown("""
+    <div class="metric-card">
+    <h3>02 — CNN Features</h3>
+    <p>Extraction automatique des caractéristiques visuelles importantes.</p>
+    </div>
+    """, unsafe_allow_html=True)
+    c3.markdown("""
+    <div class="metric-card">
+    <h3>03 — LSTM Timeline</h3>
+    <p>Analyse temporelle du comportement sur plusieurs images successives.</p>
+    </div>
+    """, unsafe_allow_html=True)
 
     st.subheader("Dernières séquences analysées")
     st.dataframe(df.tail(10), use_container_width=True)
@@ -173,22 +285,26 @@ if page == "🏠 Dashboard":
 # =========================
 # ANALYSE VIDEO
 # =========================
-elif page == "🎬 Analyse vidéo":
-    header("🎬 Analyse vidéo", "Importer une vidéo ou choisir une séquence pour simuler la détection IA.")
+elif page == "🎥 AI Monitoring":
+    header("🎥 AI Monitoring Center", "Analyse vidéo simulée avec pipeline YOLO + CNN + LSTM.")
 
     uploaded_video = st.file_uploader("Importer une vidéo de surveillance", type=["mp4", "avi", "mov", "mkv"])
 
     colA, colB = st.columns([1, 1])
 
     with colA:
-        selected_seq = st.selectbox("Ou choisir une séquence du dataset", df["sequence_id"].tolist())
+        selected_seq = st.selectbox("Choisir une séquence du dataset", df["sequence_id"].tolist())
         seq = df[df["sequence_id"] == selected_seq].iloc[0]
 
-        st.write("### Informations de la séquence")
-        st.write(f"Nombre de frames : **{seq['nb_frames']}**")
-        st.write(f"Personnes détectées : **{seq['nb_personnes_detectees']}**")
-        st.write(f"Vitesse moyenne : **{seq['vitesse_moyenne']}**")
-        st.write(f"Zone sensible : **{'Oui' if seq['zone_sensible'] == 1 else 'Non'}**")
+        st.markdown("### Sequence Intelligence")
+        st.markdown(f"""
+        <div class="info-box">
+        Frames : <b>{seq['nb_frames']}</b><br>
+        Personnes détectées : <b>{seq['nb_personnes_detectees']}</b><br>
+        Vitesse moyenne : <b>{seq['vitesse_moyenne']}</b><br>
+        Zone sensible : <b>{'Oui' if seq['zone_sensible'] == 1 else 'Non'}</b>
+        </div>
+        """, unsafe_allow_html=True)
 
     with colB:
         if uploaded_video is not None:
@@ -196,20 +312,20 @@ elif page == "🎬 Analyse vidéo":
         else:
             st.markdown("""
             <div class="info-box">
-            Aucune vidéo importée. La démonstration utilisera une séquence simulée du dataset.
+            Aucune vidéo importée. La démonstration utilise une séquence simulée du dataset.
             </div>
             """, unsafe_allow_html=True)
 
-    if st.button("🚀 Lancer l'analyse IA"):
+    if st.button("🚀 Launch AI Analysis"):
         progress = st.progress(0)
         status = st.empty()
 
         steps = [
-            "Chargement de la vidéo...",
-            "Détection des personnes avec YOLO...",
-            "Extraction des caractéristiques avec CNN...",
-            "Analyse temporelle avec LSTM...",
-            "Génération du résultat final..."
+            "Loading video stream...",
+            "Running YOLO object detection...",
+            "Extracting visual features with CNN...",
+            "Analyzing behavior timeline with LSTM...",
+            "Generating final decision..."
         ]
 
         for i, step in enumerate(steps):
@@ -220,55 +336,60 @@ elif page == "🎬 Analyse vidéo":
         score = float(seq["score_risque"])
         result = "Suspect" if score >= 0.5 else "Normal"
 
-        st.subheader("Résultat de l'analyse")
+        st.subheader("AI Decision Result")
 
         if result == "Suspect":
             st.markdown(f"""
             <div class="alert-box">
-            🚨 Comportement suspect détecté<br>
-            Score de risque : {round(score*100, 2)}%
+            <h3>⚠️ THREAT DETECTED</h3>
+            Comportement suspect détecté<br>
+            Risk Score : {round(score*100, 2)}%
             </div>
             """, unsafe_allow_html=True)
         else:
             st.markdown(f"""
             <div class="normal-box">
-            ✅ Comportement normal<br>
-            Score de risque : {round(score*100, 2)}%
+            <h3>✅ SAFE BEHAVIOR</h3>
+            Comportement normal<br>
+            Risk Score : {round(score*100, 2)}%
             </div>
             """, unsafe_allow_html=True)
 
         st.success("Analyse terminée avec succès.")
 
 
-#
-elif page == "🚨 Alertes":
-    header("🚨 Gestion des alertes", "Historique des comportements suspects détectés par le système.")
+# =========================
+# ALERTES
+# =========================
+elif page == "⚠️ Threat Detection":
+    header("⚠️ Threat Detection Center", "Historique des comportements suspects détectés par le système.")
 
     alerts = df[df["comportement"] == "Suspect"].copy()
     alerts["date"] = pd.date_range(end=datetime.now(), periods=len(alerts), freq="h")
-    alerts["camera"] = np.random.choice(["Entrée principale", "Parking", "Couloir", "Salle serveur"], len(alerts))
+    alerts["camera"] = np.random.choice(["Entrance Gate", "Parking Area", "Main Corridor", "Server Room"], len(alerts))
     alerts["niveau"] = pd.cut(
         alerts["score_risque"],
         bins=[0, 0.6, 0.8, 1],
-        labels=["Moyen", "Élevé", "Critique"]
+        labels=["MEDIUM", "HIGH", "CRITICAL"]
     )
-    alerts["statut"] = np.random.choice(["Non traité", "En cours", "Traité"], len(alerts))
+    alerts["statut"] = np.random.choice(["OPEN", "INVESTIGATING", "RESOLVED"], len(alerts))
 
     st.dataframe(
         alerts[["date", "sequence_id", "camera", "score_risque", "niveau", "statut"]],
         use_container_width=True
     )
 
-    st.subheader("Détail d'une alerte")
+    st.subheader("Threat Details")
     chosen = st.selectbox("Choisir une alerte", alerts["sequence_id"].tolist())
     row = alerts[alerts["sequence_id"] == chosen].iloc[0]
 
     st.markdown(f"""
     <div class="alert-box">
-    Alerte : {chosen}<br>
-    Caméra : {row['camera']}<br>
-    Niveau : {row['niveau']}<br>
-    Score de risque : {round(row['score_risque']*100, 2)}%
+    <h3>⚠️ Alert ID : {chosen}</h3>
+    Camera Node : {row['camera']}<br>
+    Threat Level : {row['niveau']}<br>
+    Risk Score : {round(row['score_risque']*100, 2)}%<br>
+    Status : {row['statut']}
     </div>
     """, unsafe_allow_html=True)
 
@@ -276,62 +397,67 @@ elif page == "🚨 Alertes":
 # =========================
 # CAMERAS
 # =========================
-elif page == "📷 Caméras":
-    header("📷 Caméras connectées", "Suivi de l'état des caméras de surveillance.")
+elif page == "📡 Camera Network":
+    header("📡 Camera Network", "Supervision des caméras connectées au système.")
 
     cameras = [
-        {"nom": "Caméra 01", "zone": "Entrée principale", "statut": "Active", "analyse": "Temps réel"},
-        {"nom": "Caméra 02", "zone": "Parking", "statut": "Active", "analyse": "Temps réel"},
-        {"nom": "Caméra 03", "zone": "Couloir", "statut": "Analyse en cours", "analyse": "YOLO actif"},
-        {"nom": "Caméra 04", "zone": "Salle serveur", "statut": "Hors ligne", "analyse": "Non disponible"},
+        {"nom": "Node-01", "zone": "Entrance Gate", "statut": "ONLINE", "analyse": "Real-Time AI"},
+        {"nom": "Node-02", "zone": "Parking Area", "statut": "ONLINE", "analyse": "Real-Time AI"},
+        {"nom": "Node-03", "zone": "Main Corridor", "statut": "ANALYZING", "analyse": "YOLO Active"},
+        {"nom": "Node-04", "zone": "Server Room", "statut": "OFFLINE", "analyse": "Unavailable"},
     ]
 
     cols = st.columns(2)
     for i, cam in enumerate(cameras):
+        status_class = "status-online"
+        if cam["statut"] == "ANALYZING":
+            status_class = "status-warning"
+        elif cam["statut"] == "OFFLINE":
+            status_class = "status-offline"
+
         with cols[i % 2]:
             st.markdown(f"""
             <div class="metric-card">
-            <h3>{cam['nom']}</h3>
+            <h3>📡 {cam['nom']}</h3>
             <p>Zone : {cam['zone']}</p>
-            <p>Statut : {cam['statut']}</p>
-            <p>Mode analyse : {cam['analyse']}</p>
+            <p>Status : <span class="{status_class}">{cam['statut']}</span></p>
+            <p>AI Mode : {cam['analyse']}</p>
             </div>
             """, unsafe_allow_html=True)
-            st.write("")
 
 
 # =========================
 # RAPPORTS
 # =========================
-elif page == "📊 Rapports":
-    header("📊 Rapports et statistiques", "Visualisation des résultats obtenus par le système IA.")
+elif page == "📈 Intelligence Reports":
+    header("📈 AI Intelligence Reports", "Statistiques et visualisation des résultats produits par l'IA.")
 
-    st.subheader("Répartition des comportements")
+    st.subheader("Behavior Analytics")
     counts = df["comportement"].value_counts().reset_index()
     counts.columns = ["Comportement", "Nombre"]
     st.bar_chart(counts.set_index("Comportement"))
 
-    st.subheader("Évolution du score de risque")
+    st.subheader("Risk Evolution")
     chart_df = df[["sequence_id", "score_risque"]].set_index("sequence_id")
     st.line_chart(chart_df)
 
-    st.subheader("Statistiques générales")
+    st.subheader("General Statistics")
     st.write(df.describe())
 
 
 # =========================
 # PARAMETRES IA
 # =========================
-elif page == "⚙️ Paramètres IA":
-    header("⚙️ Paramètres IA", "Configuration du modèle et des seuils de détection.")
+elif page == "🤖 AI Engine":
+    header("🤖 AI Engine Configuration", "Configuration du modèle et des seuils de détection.")
 
-    st.subheader("Configuration du modèle")
+    st.subheader("Model Configuration")
     model_name = st.selectbox("Modèle utilisé", ["YOLO + CNN + LSTM", "YOLO seulement", "CNN + LSTM"])
     threshold = st.slider("Seuil de détection suspecte", 0.0, 1.0, 0.5, 0.05)
     conf_yolo = st.slider("Confiance YOLO", 0.0, 1.0, 0.25, 0.05)
     mode = st.radio("Mode d'analyse", ["Vidéo importée", "Temps réel", "Dataset simulé"])
 
-    if st.button("💾 Sauvegarder les paramètres"):
+    if st.button("💾 Save AI Parameters"):
         st.success("Paramètres sauvegardés avec succès.")
 
     st.markdown(f"""
