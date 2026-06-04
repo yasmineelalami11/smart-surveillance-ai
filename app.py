@@ -10,10 +10,29 @@ st.set_page_config(
     page_icon="🎥",
     layout="wide"
 )
+st.markdown("""
+<style>
+.stApp {
+    background-color: #0B1020 !important;
+    color: #FFFFFF !important;
+}
 
-# =========================
-# STYLE CSS
-# =========================
+[data-testid="stSidebar"] {
+    background-color: #111827 !important;
+}
+
+h1, h2, h3, p, label, span, div {
+    color: #FFFFFF !important;
+}
+
+[data-testid="stMetricValue"],
+[data-testid="stMetricLabel"] {
+    color: #FFFFFF !important;
+}
+</style>
+""", unsafe_allow_html=True)
+
+
 st.markdown("""
 <style>
     .main {
@@ -221,9 +240,7 @@ elif page == "🎬 Analyse vidéo":
         st.success("Analyse terminée avec succès.")
 
 
-# =========================
-# ALERTES
-# =========================
+#
 elif page == "🚨 Alertes":
     header("🚨 Gestion des alertes", "Historique des comportements suspects détectés par le système.")
 
