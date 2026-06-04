@@ -1,0 +1,24 @@
+
+SCRIPT ORAL POUR PRÉSENTER L’INTERFACE
+
+Bonjour monsieur,
+
+Après avoir développé le modèle de détection basé sur YOLO, CNN et LSTM, nous avons aussi réalisé une interface web pour montrer comment notre projet pourrait être utilisé dans une vraie plateforme de surveillance.
+
+Cette plateforme s’appelle Smart Surveillance AI.
+
+Dans le dashboard, on peut voir un résumé global du système : le nombre de séquences analysées, le nombre de comportements normaux, le nombre de comportements suspects et le score de risque moyen.
+
+Ensuite, dans la page Analyse vidéo, l’utilisateur peut importer une vidéo ou choisir une séquence du dataset. Lorsqu’on clique sur Lancer l’analyse IA, la plateforme simule les étapes du modèle : détection avec YOLO, extraction des caractéristiques avec CNN, puis analyse temporelle avec LSTM.
+
+À la fin, le système affiche le résultat : soit comportement normal, soit comportement suspect, avec un score de risque.
+
+La page Alertes permet de consulter l’historique des comportements suspects détectés. Chaque alerte contient la caméra concernée, le niveau de risque et le statut de traitement.
+
+La page Caméras affiche les caméras connectées, par exemple l’entrée principale, le parking, le couloir et la salle serveur.
+
+La page Rapports permet de visualiser les statistiques, comme la répartition entre comportements normaux et suspects.
+
+Enfin, la page Paramètres IA permet de modifier certains paramètres comme le seuil de détection ou la confiance YOLO.
+
+Donc cette interface montre que notre projet ne se limite pas seulement au modèle IA, mais peut devenir une vraie plateforme utilisable par un agent de sécurité.
